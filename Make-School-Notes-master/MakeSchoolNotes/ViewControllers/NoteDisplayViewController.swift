@@ -30,7 +30,7 @@ class NoteDisplayViewController: UIViewController {
   
   //MARK: Initialization
   
-  required init(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     editMode = true
 
     super.init(coder: aDecoder)
@@ -97,7 +97,7 @@ class NoteDisplayViewController: UIViewController {
 
       realm.transactionWithBlock { () -> Void in
         if (note.title != self.titleTextField.text || note.content != self.contentTextView.textValue) {
-          note.title = self.titleTextField.text
+          note.title = self.titleTextField.text!
           note.content = self.contentTextView.textValue
           note.modificationDate = NSDate()
         }
